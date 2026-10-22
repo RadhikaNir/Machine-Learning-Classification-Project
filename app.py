@@ -17,7 +17,7 @@ model = joblib.load("model.joblib")
 
 # Create Input boxes that takes input from the user 
 ID = st.number_input("ID")
-Product ID = st.number_input("Product ID")
+Product_ID = st.number_input("Product ID")
 Type = st.selectbox("Type",options=['L','M'])
 Air Temperature[K] = st.number_input("Ait Temperature")
 Process Temperature[K] = st.number_input("Process Temperature")
@@ -36,7 +36,7 @@ submit = st.button("Predict Machine Failure  Status")
 if submit:
     data = {
         'id':[ID],
-        'Product ID':[Product ID],
+        'Product ID':[Product_ID],
         'Type':[Type],
         'Air Temperature[K]':[Air Temperature[K]],
         'Process Temperature[K]':[Process Temperature[K]],
