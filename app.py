@@ -19,16 +19,16 @@ model = joblib.load("model.joblib")
 ID = st.number_input("ID")
 Product_ID = st.text_input("Product ID", value="L53257")
 Type = st.selectbox("Type",options=['L','M','H'])
-Air Temperature[K] = st.number_input("Ait Temperature")
-Process Temperature[K] = st.number_input("Process Temperature")
-Rotational Speed[RPM] = st.number_input("Rotaional Speed")
-Torque[NM] = st.number_input("Torque")
-Tool Wear = st.number_input("Tool Wear")
-TWF = st.number_input("TWF")
-HDF = st.number_input("HDF")
-PWF = st.number_input("PWF")
-OSF = st.number_input("OSF")
-RNF = st.number_input("RNF")
+Air_Temperature = st.number_input("Ait Temperature [K]")
+Process_Temperature = st.number_input("Process Temperature [K]")
+Rotational_Speed = st.number_input("Rotational Speed [RPM]")
+Torque = st.number_input("Torque [Nm]")
+Tool_Wear = st.number_input("Tool Wear")
+TWF = st.selectbox("TWF", options=[0,1])
+HDF = st.selectbox("HDF", options=[0,1])
+PWF = st.selectbox("PWF", options=[0,1])
+OSF = st.selectbox("OSF", options=[0,1])
+RNF = st.selectbox("RNF", options=[0,1])
 
 # Include a button. After providing all the inputs, user will click on the button. The button should provide the necessary predictions
 submit = st.button("Predict Machine Failure  Status")
@@ -38,11 +38,11 @@ if submit:
         'id':[ID],
         'Product ID':[Product_ID],
         'Type':[Type],
-        'Air Temperature[K]':[Air Temperature[K]],
-        'Process Temperature[K]':[Process Temperature[K]],
-        'Rotational speed[rpm]':[Rotatioanl Speed[RPM]],
-        'Torque[Nm]':[Torque[NM]],
-        'Tool wear[min]':[Tool Wear],
+        'Air Temperature[K]':[Air_Temperature],
+        'Process Temperature[K]':[Process_Temperature],
+        'Rotational speed[rpm]':[Rotational_Speed],
+        'Torque[Nm]':[Torque],
+        'Tool wear[min]':[Tool_Wear],
         'TWF':[TWF],
         'HDF':[HDF],
         'PWF':[PWF],
@@ -60,10 +60,10 @@ if submit:
     # predictions
     preds = model.predict(xnew_pre)
     if preds[0]==1:
-        op = 'Machine is Failed'
+        op = 'Machine has Failed'
         # st.subheader('Machine has Failed')
     else:
-        op = 'Machine is Not Failed'
+        op = 'Machine has Not Failed'
         # st.subheader('Machine has Not Failed')
     
     st.subheader(op)
