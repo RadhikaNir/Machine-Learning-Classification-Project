@@ -17,8 +17,8 @@ model = joblib.load("model.joblib")
 
 # Create Input boxes that takes input from the user 
 ID = st.number_input("ID")
-Product_ID = st.number_input("Product ID")
-Type = st.selectbox("Type",options=['L','M'])
+Product_ID = st.text_input("Product ID", value="L53257")
+Type = st.selectbox("Type",options=['L','M','H'])
 Air Temperature[K] = st.number_input("Ait Temperature")
 Process Temperature[K] = st.number_input("Process Temperature")
 Rotational Speed[RPM] = st.number_input("Rotaional Speed")
@@ -61,9 +61,9 @@ if submit:
     preds = model.predict(xnew_pre)
     if preds[0]==1:
         op = 'Machine is Failed'
-        # st.subheader('Machine is Failed')
+        # st.subheader('Machine has Failed')
     else:
         op = 'Machine is Not Failed'
-        # st.subheader('Machine is Not Failed')
+        # st.subheader('Machine has Not Failed')
     
     st.subheader(op)
