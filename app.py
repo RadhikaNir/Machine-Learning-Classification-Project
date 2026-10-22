@@ -61,9 +61,9 @@ if submit:
     preds = model.predict(xnew_pre)
     if preds[0]==1:
         op = 'Machine is Failed'
-        # st.subheader('Loan Status is Approved')
+        # st.subheader('Machine is Failed')
     else:
-        op = 'Loan Status is Not Approved'
-        # st.subheader('Loan Status is Not Approved')
+        op = 'Machine is Not Failed'
+        # st.subheader('Machine is Not Failed')
     
     st.subheader(op)
