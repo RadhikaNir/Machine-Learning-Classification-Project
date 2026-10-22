@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 
-# set the tab title
+# Set the tab title
 st.set_page_config("Deployment Project")
 
 # Set the page title
